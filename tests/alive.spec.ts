@@ -42,11 +42,28 @@ function canvasSample() {
 
 const ids = listIds()
 
+test('VFX-aligned product shell renders the 200-work catalog', async ({ page }) => {
+  await page.goto('#/')
+  await expect(page.locator('.site-header')).toBeVisible()
+  await expect(page.locator('.gallery-layout')).toBeVisible()
+  await expect(page.locator('.filters')).toBeVisible()
+  await expect(page.locator('.gallery-toolbar')).toBeVisible()
+  await expect(page.locator('.effect-grid .effect-card')).toHaveCount(200)
+  await expect(page.locator('[data-role="count"]')).toHaveText('200 / 200')
+
+  await page.goto('#/about')
+  await expect(page.locator('.about-page')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'GITHUB.COM/DECK6/DEXA-GEN-LAB ↗' })).toHaveAttribute(
+    'href',
+    'https://github.com/DECK6/dexa-gen-lab',
+  )
+})
+
 test('gallery route renders', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(String(error)))
   await page.goto('#/')
-  await expect(page.locator('.grid .card').first()).toBeVisible()
+  await expect(page.locator('.effect-grid .effect-card').first()).toBeVisible()
   expect(errors.join('\n')).toBe('')
 })
 

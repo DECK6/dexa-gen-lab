@@ -1,4 +1,4 @@
-# DEXA GEN LAB — 카탈로그 v1 (10 카테고리 × 10종 = 100)
+# DEXA GEN LAB — 카탈로그 v2 (20 카테고리 × 10종 = 200)
 
 ID 규칙: 카테고리 접두 2자 + 2자리. `★` = 골든 레퍼런스(Fable 구현, 나머지는 발주 대상).
 title은 영문 대문자, description은 한 줄 한국어. 모든 스케치는 애니메이션(§SPEC 2-5).
@@ -152,3 +152,153 @@ title은 영문 대문자, description은 한 줄 한국어. 모든 스케치는
 | CH08 | bifurcation | BIFURCATION | 로지스틱 맵 분기 다이어그램을 훑는 스캔 |
 | CH09 | duffing-phase | DUFFING PHASE | 더핑 진동자 위상 궤적의 리본 |
 | CH10 | epicycle-lace | EPICYCLE LACE | 정수비 공명 주전원이 짜는 레이스 |
+
+## WAVE — 파동·진동 (`wave`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| WV01 | sine-weave | SINE WEAVE | 겹친 사인 곡선이 직조하듯 교차하는 파동장 |
+| WV02 | standing-node | STANDING NODE | 정상파의 마디와 배가 천천히 이동하는 선형 공명 |
+| WV03 | harmonic-tide | HARMONIC TIDE | 배음열이 밀물처럼 겹쳐지는 수평 파동 |
+| WV04 | radial-chime | RADIAL CHIME | 원형으로 번지는 진동이 종소리처럼 간섭하는 장면 |
+| WV05 | phase-cascade | PHASE CASCADE | 위상차를 가진 곡선 다발이 연쇄적으로 미끄러지는 흐름 |
+| WV06 | pulse-ribbon | PULSE RIBBON | 진폭 펄스가 여러 리본을 따라 전파되는 파형 |
+| WV07 | beat-mesh | BEAT MESH | 근접 주파수의 맥놀이가 격자형 파동망을 만드는 장면 |
+| WV08 | echo-curve | ECHO CURVE | 한 곡선의 잔향이 시간차를 두고 반복되는 궤적 |
+| WV09 | wave-packet | WAVE PACKET | 국소 파동 묶음이 화면을 가로질러 이동하는 흐름 |
+| WV10 | resonance-map | RESONANCE MAP | 다중 공명 주파수가 등고선처럼 드러나는 지도 |
+
+## OPTICS — 광학·간섭 (`optics`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| OP01 | moire-orbit | MOIRE ORBIT | 회전하는 동심 격자가 모아레 궤도를 만드는 광학 패턴 |
+| OP02 | diffraction-fan | DIFFRACTION FAN | 좁은 틈을 통과한 빛처럼 펼쳐지는 회절 부채 |
+| OP03 | lens-caustic | LENS CAUSTIC | 렌즈 초점선이 움직이며 만드는 유동적 코스틱 |
+| OP04 | prism-grid | PRISM GRID | 기하 격자가 신호색과 강조색으로 분광되는 장면 |
+| OP05 | interference-veil | INTERFERENCE VEIL | 두 파원의 간섭무늬가 얇은 막처럼 흔들리는 패턴 |
+| OP06 | aperture-bloom | APERTURE BLOOM | 조리개 날이 열리고 닫히며 빛의 꽃을 만드는 장면 |
+| OP07 | chroma-fringe | CHROMA FRINGE | 윤곽 주변의 색수차가 호흡하듯 벌어지는 패턴 |
+| OP08 | mirror-scan | MIRROR SCAN | 대칭 축이 순회하며 반사된 선속을 스캔하는 장면 |
+| OP09 | light-cone | LIGHT CONE | 움직이는 광원이 원뿔형 빛다발을 투사하는 구성 |
+| OP10 | refraction-field | REFRACTION FIELD | 격자 위 굴절률 변화가 선을 휘게 만드는 광학장 |
+
+## DATA — 데이터·계측 (`data`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| DT01 | signal-bars | SIGNAL BARS | 다중 신호 막대가 주기와 노이즈에 따라 갱신되는 계기판 |
+| DT02 | pulse-matrix | PULSE MATRIX | 데이터 셀의 펄스가 행과 열을 따라 이동하는 매트릭스 |
+| DT03 | orbit-ledger | ORBIT LEDGER | 회전 데이터 포인트와 누적값을 함께 표시하는 원형 장부 |
+| DT04 | stream-plot | STREAM PLOT | 여러 시계열이 스트리밍되며 교차하는 실시간 플롯 |
+| DT05 | radial-index | RADIAL INDEX | 방사형 인덱스 바가 신호 세기를 순환 표시하는 장면 |
+| DT06 | packet-rain | PACKET RAIN | 데이터 패킷이 열 단위로 낙하하고 누적되는 흐름 |
+| DT07 | heatmap-drift | HEATMAP DRIFT | 노이즈 기반 열지도가 천천히 이동하는 데이터 표면 |
+| DT08 | ticker-field | TICKER FIELD | 수치 티커가 격자 안에서 서로 다른 속도로 흐르는 장면 |
+| DT09 | vector-scope | VECTOR SCOPE | 두 신호의 상관관계를 벡터 궤적으로 표시하는 스코프 |
+| DT10 | cluster-pulse | CLUSTER PULSE | 군집 데이터가 중심별로 수축하고 확장하는 산점도 |
+
+## SYSTEM — 시스템·네트워크 (`system`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| SY01 | queue-flow | QUEUE FLOW | 대기열의 항목이 처리 노드를 거쳐 이동하는 시스템 흐름 |
+| SY02 | node-gossip | NODE GOSSIP | 노드 사이 소문 전파가 망 전체로 번지는 네트워크 |
+| SY03 | state-orbit | STATE ORBIT | 상태 노드들이 순환 전이를 반복하는 유한상태 궤도 |
+| SY04 | feedback-gate | FEEDBACK GATE | 출력이 입력으로 돌아오며 증폭과 감쇠를 반복하는 루프 |
+| SY05 | swarm-consensus | SWARM CONSENSUS | 분산 노드들이 공통 위상으로 수렴하는 합의 과정 |
+| SY06 | traffic-loop | TRAFFIC LOOP | 순환 경로의 토큰이 병목과 해소를 반복하는 교통계 |
+| SY07 | memory-trace | MEMORY TRACE | 최근 경로가 잔상으로 남는 상태 기억 네트워크 |
+| SY08 | signal-router | SIGNAL ROUTER | 입력 신호가 규칙에 따라 여러 출력으로 분기되는 라우터 |
+| SY09 | cascade-lock | CASCADE LOCK | 연쇄 노드가 임계점을 넘어 순차적으로 잠기는 과정 |
+| SY10 | phase-network | PHASE NETWORK | 연결된 진동자들이 위상을 교환하는 동적 그래프 |
+
+## KINETIC — 기계 운동 (`kinetic`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| KN01 | crank-array | CRANK ARRAY | 위상차를 둔 크랭크 배열이 왕복운동을 만드는 장치 |
+| KN02 | pendulum-bank | PENDULUM BANK | 길이가 다른 진자들이 파동처럼 정렬되는 진자열 |
+| KN03 | gear-bloom | GEAR BLOOM | 맞물린 기어가 꽃잎처럼 회전하는 기계적 개화 |
+| KN04 | cam-follower | CAM FOLLOWER | 회전 캠의 윤곽을 따라 종동자가 오르내리는 장치 |
+| KN05 | linkage-wave | LINKAGE WAVE | 사절 링크 연쇄가 물결 모양 운동을 전달하는 구조 |
+| KN06 | rotor-field | ROTOR FIELD | 다중 로터의 회전 위상이 장 전체에 흐르는 배열 |
+| KN07 | balance-chain | BALANCE CHAIN | 연결된 균형추가 힘을 주고받으며 흔들리는 체인 |
+| KN08 | piston-rhythm | PISTON RHYTHM | 피스톤 열이 서로 다른 박자로 왕복하는 엔진 리듬 |
+| KN09 | escapement | ESCAPEMENT | 톱니와 팔레트가 간헐적으로 맞물리는 시계 탈진기 |
+| KN10 | kinetic-loom | KINETIC LOOM | 기계 링크가 직조 운동을 반복하는 키네틱 직기 |
+
+## TEXTILE — 직물·패턴 (`textile`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| TL01 | warp-weft | WARP WEFT | 날실과 씨실이 교대로 위아래를 지나는 기본 직조 |
+| TL02 | basket-shift | BASKET SHIFT | 두 올씩 묶인 바스켓 조직이 위상 이동하는 패턴 |
+| TL03 | satin-wave | SATIN WAVE | 긴 부유사가 물결처럼 번지는 새틴 조직 |
+| TL04 | twill-drift | TWILL DRIFT | 사선 능직선이 천천히 화면을 가로지르는 직물 |
+| TL05 | knot-grid | KNOT GRID | 격자 교차점의 매듭이 순차적으로 조여지는 패턴 |
+| TL06 | plaid-pulse | PLAID PULSE | 굵기 다른 띠가 펄스하며 변주되는 체크 직물 |
+| TL07 | braid-field | BRAID FIELD | 세 가닥 곡선이 반복적으로 교차하는 땋기 장 |
+| TL08 | jacquard-noise | JACQUARD NOISE | 노이즈 마스크가 복잡한 자카드 무늬를 갱신하는 직조 |
+| TL09 | lace-cell | LACE CELL | 빈 공간과 연결선이 반복되는 레이스 셀 구조 |
+| TL10 | fiber-current | FIBER CURRENT | 섬유 다발이 유체 흐름처럼 휘어지는 직물 표면 |
+
+## FLUID — 유체·흐름 (`fluid`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| FL01 | ink-advection | INK ADVECTION | 잉크 입자가 노이즈 유동장에 실려 번지는 흐름 |
+| FL02 | vortex-dye | VORTEX DYE | 염료 입자가 회전 소용돌이에 감겨드는 유체 궤적 |
+| FL03 | smoke-plume | SMOKE PLUME | 부력과 난류를 따라 상승하는 연기 기둥 |
+| FL04 | laminar-fold | LAMINAR FOLD | 층류 띠가 반복적으로 접히며 얇아지는 흐름 |
+| FL05 | bubble-current | BUBBLE CURRENT | 기포 군집이 상승류와 횡류에 흔들리는 장면 |
+| FL06 | oil-slick | OIL SLICK | 얇은 막의 간섭색 같은 곡선이 유영하는 표면 |
+| FL07 | ripple-basin | RIPPLE BASIN | 여러 낙하점의 원형 파문이 수면에서 간섭하는 장면 |
+| FL08 | thermal-column | THERMAL COLUMN | 가열된 유체가 기둥을 이루며 상승하고 분기하는 흐름 |
+| FL09 | tide-pool | TIDE POOL | 경계 안의 완만한 조류가 입자를 순환시키는 작은 수조 |
+| FL10 | capillary-web | CAPILLARY WEB | 가는 유체 선이 표면장력처럼 연결되는 모세관 망 |
+
+## MINIMAL — 절제된 운동 (`minimal`, p5)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| MN01 | single-orbit | SINGLE ORBIT | 하나의 점과 궤도만으로 구성한 느린 회전 |
+| MN02 | breathing-line | BREATHING LINE | 한 줄의 길이와 곡률이 호흡하듯 변하는 구성 |
+| MN03 | quiet-grid | QUIET GRID | 성긴 격자의 한 지점만 이동하는 절제된 장면 |
+| MN04 | offset-circle | OFFSET CIRCLE | 중심에서 비껴난 원들이 미세하게 정렬되는 운동 |
+| MN05 | two-body | TWO BODY | 두 형태가 거리와 크기를 교환하는 최소 역학 |
+| MN06 | interval-field | INTERVAL FIELD | 간격이 천천히 이동하는 수직선의 장 |
+| MN07 | silent-pulse | SILENT PULSE | 단일 사각형의 밝기와 크기만 변화하는 펄스 |
+| MN08 | narrow-wave | NARROW WAVE | 가느다란 파형 하나가 화면을 천천히 횡단하는 구성 |
+| MN09 | hinge-point | HINGE POINT | 한 축을 중심으로 두 선분이 접히고 펴지는 운동 |
+| MN10 | slow-divider | SLOW DIVIDER | 화면을 나누는 경계선이 완만히 이동하는 장면 |
+
+## TOPOLOGY — 3D 위상·매듭 (`topology`, three)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| TP01 | torus-flow | TORUS FLOW | 토러스 표면을 따라 흐르는 다중 폐곡선 |
+| TP02 | mobius-band | MOBIUS BAND | 한 번 비틀린 띠를 연상시키는 연속 궤적 |
+| TP03 | klein-shadow | KLEIN SHADOW | 클라인 병의 자기교차를 암시하는 와이어 구조 |
+| TP04 | linked-rings | LINKED RINGS | 서로 관통하며 회전하는 연결 고리 군집 |
+| TP05 | trefoil-trace | TREFOIL TRACE | 삼엽 매듭을 따라 흐르는 발광 궤적 |
+| TP06 | genus-shift | GENUS SHIFT | 구멍 수가 변하는 듯 호흡하는 위상 표면 |
+| TP07 | braided-loop | BRAIDED LOOP | 여러 폐곡선이 땋이듯 교차하는 3D 루프 |
+| TP08 | knot-surface | KNOT SURFACE | 토러스 매듭과 궤도선이 만드는 복합 표면 |
+| TP09 | orbital-link | ORBITAL LINK | 서로 다른 평면의 궤도가 위상적으로 연결된 구조 |
+| TP10 | topology-cage | TOPOLOGY CAGE | 다중 매듭선이 회전하며 만드는 투명 케이지 |
+
+## COSMIC — 3D 우주 (`cosmic`, three)
+
+| ID | slug | title | 설명 |
+|---|---|---|---|
+| CS01 | star-forge | STAR FORGE | 고밀도 별점이 중심 원반에서 탄생하는 항성 공장 |
+| CS02 | nebula-shell | NEBULA SHELL | 성운 입자가 구각을 따라 호흡하는 우주 껍질 |
+| CS03 | pulsar-beam | PULSAR BEAM | 회전 천체의 두 광선이 공간을 주기적으로 스캔 |
+| CS04 | comet-swarm | COMET SWARM | 꼬리를 가진 입자 무리가 중심 천체를 스쳐가는 장면 |
+| CS05 | dark-orbit | DARK ORBIT | 어두운 중심체 주변으로 빛점이 휘어지는 궤도 |
+| CS06 | cluster-lens | CLUSTER LENS | 성단 중심의 중력렌즈를 암시하는 휘어진 별 고리 |
+| CS07 | solar-flare | SOLAR FLARE | 항성 표면에서 호 형태 플레어가 솟는 장면 |
+| CS08 | asteroid-belt | ASTEROID BELT | 크기가 다른 암석 입자가 띠를 이루며 공전 |
+| CS09 | cosmic-web | COSMIC WEB | 별점과 연결선이 대규모 우주망을 만드는 구조 |
+| CS10 | event-horizon | EVENT HORIZON | 빛의 원반과 입자가 사건의 지평선 주변을 회전 |

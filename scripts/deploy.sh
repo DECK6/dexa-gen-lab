@@ -11,6 +11,10 @@ node scripts/thumbs.mjs
 mkdir -p dist/thumbs
 cp -R public/thumbs/. dist/thumbs/
 
-mkdir -p "$DEST"
-rsync -a --delete dist/ "$DEST/"
+STAGE="$(mktemp -d "${DEST}.staging.XXXXXX")"
+cp -R dist/. "$STAGE/"
+if [[ -d "$DEST" ]]; then
+  trash "$DEST"
+fi
+mv "$STAGE" "$DEST"
 echo "deployed dist/ → $DEST (git commit/push는 사용자 승인 후 수동)"

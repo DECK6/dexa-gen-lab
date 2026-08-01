@@ -1,6 +1,7 @@
 import { CATEGORIES, ENGINES, SKETCHES, type SketchEntry } from '../registry'
 import { mountSketch, type SketchHandle } from '../runner'
 import type { CategoryId, Engine } from '../types'
+import { siteHeader } from './shell'
 
 const CARD_SIZE = 320
 const CARD_SEED = 7
@@ -21,25 +22,42 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
   let query = ''
 
   root.innerHTML = `
-    <header class="site-head">
-      <a class="brand" href="#/">DEXA GEN LAB<span class="dot">.</span></a>
-      <span class="head-tag mono">GENERATIVE ART CATALOG · P5 + THREE</span>
-      <a class="head-link mono" href="https://dexa.art">DEXA.ART ↗</a>
-    </header>
-    <main class="gallery">
-      <div class="filters">
-        <div class="chip-row" data-role="categories"></div>
-        <div class="filter-tail">
-          <div class="chip-row" data-role="engines"></div>
-          <label class="search mono">
-            <span>SEARCH</span>
-            <input type="search" placeholder="ID / TITLE / TAG" />
-          </label>
-          <span class="count mono" data-role="count"></span>
+    ${siteHeader('gallery')}
+    <main class="gallery-layout">
+      <aside class="filters mono" aria-label="Sketch filters">
+        <div class="filter-heading">
+          <span>FILTERS</span>
+          <button type="button" data-role="reset">RESET</button>
         </div>
-      </div>
-      <div class="grid" data-role="grid"></div>
-      <p class="empty mono" data-role="empty" hidden>NO SKETCH ON SIGNAL</p>
+        <fieldset>
+          <legend>CATEGORY</legend>
+          <div class="filter-options filter-columns" data-role="categories"></div>
+        </fieldset>
+        <fieldset>
+          <legend>ENGINE</legend>
+          <div class="filter-options" data-role="engines"></div>
+        </fieldset>
+      </aside>
+      <section class="gallery-content" aria-labelledby="gallery-title">
+        <div class="gallery-toolbar">
+          <div>
+            <p class="eyebrow mono">P5 + THREE / SEEDED / LIVE CATALOG</p>
+            <h1 id="gallery-title">LIVE SKETCHES<span>.</span></h1>
+          </div>
+          <label class="search-field mono">
+            SEARCH
+            <input type="search" placeholder="ID / TITLE / TAG" autocomplete="off" />
+          </label>
+          <p class="result-count mono" data-role="count"></p>
+        </div>
+        <div class="grid-viewport">
+          <div class="effect-grid" data-role="grid"></div>
+          <div class="empty-state" data-role="empty" hidden>
+            <p class="mono">NO SKETCH ON SIGNAL</p>
+            <span>Reset the filters or try another search.</span>
+          </div>
+        </div>
+      </section>
     </main>
   `
 
@@ -48,7 +66,8 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
   const grid = root.querySelector<HTMLElement>('[data-role="grid"]')!
   const countEl = root.querySelector<HTMLElement>('[data-role="count"]')!
   const emptyEl = root.querySelector<HTMLElement>('[data-role="empty"]')!
-  const search = root.querySelector<HTMLInputElement>('.search input')!
+  const search = root.querySelector<HTMLInputElement>('.search-field input')!
+  const reset = root.querySelector<HTMLButtonElement>('[data-role="reset"]')!
 
   const live = new Map<string, LiveCard>()
   const leaveTimers = new Map<string, number>()
@@ -117,20 +136,22 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
   }
 
   const cards = SKETCHES.map((entry) => {
-    const { id, title, engine: eng } = entry.meta
+    const { id, title, engine: cardEngine } = entry.meta
     const card = document.createElement('a')
-    card.className = 'card'
+    card.className = 'effect-card'
     card.href = `#/s/${id}`
     card.innerHTML = `
-      <div class="stage card-stage">
-        <img class="card-thumb" alt="" loading="lazy" src="${import.meta.env.BASE_URL}thumbs/${id}.jpg" />
-        <div class="card-live"></div>
+      <div class="preview-bezel">
+        <div class="stage live-preview">
+          <img class="live-thumbnail" alt="" loading="lazy" src="${import.meta.env.BASE_URL}thumbs/${id}.jpg" />
+          <div class="card-live"></div>
+        </div>
       </div>
-      <div class="card-label mono">${id} / ${title} / ${eng.toUpperCase()}</div>
+      <p class="effect-label mono">${id} / ${title} / ${cardEngine.toUpperCase()}</p>
     `
-    const stage = card.querySelector<HTMLElement>('.card-stage')!
+    const stage = card.querySelector<HTMLElement>('.live-preview')!
     const slot = card.querySelector<HTMLElement>('.card-live')!
-    const thumb = card.querySelector<HTMLImageElement>('.card-thumb')!
+    const thumb = card.querySelector<HTMLImageElement>('.live-thumbnail')!
     thumb.addEventListener('error', () => {
       thumb.remove()
       stage.classList.add('is-empty')
@@ -143,23 +164,22 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
     return { entry, card }
   })
 
-  function chip(label: string, active: boolean, onClick: () => void) {
+  function choice(label: string, active: boolean, onClick: () => void) {
     const button = document.createElement('button')
     button.type = 'button'
-    button.className = active ? 'chip mono is-active' : 'chip mono'
-    button.textContent = label
+    button.className = active ? 'filter-choice is-active' : 'filter-choice'
+    button.setAttribute('aria-pressed', String(active))
+    const span = document.createElement('span')
+    span.textContent = label
+    button.appendChild(span)
     button.addEventListener('click', onClick)
     return button
   }
 
-  function renderChips() {
+  function renderChoices() {
     categoryRow.replaceChildren(
-      chip('ALL', category === null, () => {
-        category = null
-        render()
-      }),
       ...CATEGORIES.map((item) =>
-        chip(item.label, category === item.id, () => {
+        choice(item.label, category === item.id, () => {
           category = category === item.id ? null : item.id
           render()
         }),
@@ -167,7 +187,7 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
     )
     engineRow.replaceChildren(
       ...ENGINES.map((item) =>
-        chip(item.toUpperCase(), engine === item, () => {
+        choice(item.toUpperCase(), engine === item, () => {
           engine = engine === item ? null : item
           render()
         }),
@@ -187,7 +207,7 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
   }
 
   function render() {
-    renderChips()
+    renderChoices()
     let visible = 0
     for (const { entry, card } of cards) {
       const show = matches(entry)
@@ -197,10 +217,18 @@ export function mountGallery(root: HTMLElement): { destroy: () => void } {
     }
     countEl.textContent = `${visible} / ${SKETCHES.length}`
     emptyEl.hidden = visible > 0
+    grid.hidden = visible === 0
   }
 
   search.addEventListener('input', () => {
     query = search.value.trim()
+    render()
+  })
+  reset.addEventListener('click', () => {
+    category = null
+    engine = null
+    query = ''
+    search.value = ''
     render()
   })
 

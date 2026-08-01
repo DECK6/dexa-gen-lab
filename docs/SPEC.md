@@ -1,12 +1,12 @@
-# DEXA GEN LAB — 설계 스펙 v1
+# DEXA GEN LAB — 설계 스펙 v2
 
-2026-08-01. 카탈로그: [CATALOG.md](./CATALOG.md) (10 카테고리 / 100종). 진행 원장: [PROGRESS.md](./PROGRESS.md)
+2026-08-01. 카탈로그: [CATALOG.md](./CATALOG.md) (20 카테고리 / 200종). 진행 원장: [PROGRESS.md](./PROGRESS.md)
 
 ## 1. 개요
 
 크리에이티브 코딩(제너러티브 아트 / 알고리즘 아트) 샘플을 브라우저에서 **라이브로 감상하고**, 시드를 바꿔 **변주를 생성하고**, **소스 코드를 가져가는** 카탈로그 사이트.
 
-- **엔진**: p5.js (80종) + three.js (20종 — 3D 20 + GLSL 셰이더 10 포함)
+- **엔진**: p5.js (160종) + three.js (40종 — GLSL 셰이더 10종 포함)
 - **배포**: `dexa.art/gen` (GitHub Pages — `adxdeck-dexa-daily-main/gen/`, `vfx/` 패턴과 동일)
 - **소스 레포**: `/Volumes/data/Dev/dexa-gen-lab` (별도), 산출물만 adxdeck에 복사
 - vfx-lab과 달리 **프레임워크 중립 커널·Remotion·내보내기 어댑터 없음** — 스케치는 엔진 API를 직접 사용한다. 단순함 우선.
@@ -91,14 +91,14 @@ sketches/<category>/<ID>_<slug>.sketch.ts   ← export function sketch(...)
 
 ### 갤러리 (`/gen/`)
 
-- 헤더(DEXA GEN LAB) + 카테고리 필터 칩(10) + 엔진 필터(P5/THREE) + 검색.
+- VFX LAB과 동일한 문법의 헤더(GALLERY/ABOUT) + 좌측 카테고리 필터 레일(20) + 엔진 필터(P5/THREE) + 검색/결과 카운트.
 - 1:1 카드 그리드: 기본은 정지 썸네일(`public/thumbs/<id>.webp`), **hover/focus 시 라이브 마운트** (동시 라이브 상한 3, three는 1 — GL 컨텍스트 한도), leave 시 언마운트.
 - 카드 라벨: JetBrains Mono 11px 대문자 — `FD01 / PERLIN FLOW / P5`.
-- 라우팅은 해시(`#/s/<id>`). Vite `base: '/gen/'`.
+- 라우팅은 해시(`#/s/<id>`, `#/about`). Vite `base: '/gen/'`.
 
 ### 상세 (`#/s/<id>`)
 
-- 라이브 스케치(뷰포트에 맞는 정사각) + 현재 시드 표시 + **REGENERATE**(새 시드로 리마운트) + 소스 코드 패널(복사 버튼) + 같은 카테고리 이전/다음 내비.
+- VFX LAB의 workbench 구성을 따른 라이브 정사각 프리뷰 + 현재 시드 표시 + **REGENERATE**(새 시드로 리마운트) + 소스 콘솔(복사 버튼) + 관련 작품 카드.
 
 ### 프리뷰 하네스 (`#/p/<id>?seed=N&thumb=1`)
 
@@ -131,8 +131,8 @@ sketches/<category>/<ID>_<slug>.sketch.ts   ← export function sketch(...)
 | 1 | `bun run lint:registry` | 파일 규약·금지 패턴 |
 | 2 | `bun run typecheck` | tsc --noEmit strict |
 | 3 | `bun run build` | vite build (lint+tsc 포함) |
-| 4 | `bun run thumbs` | 100장 썸네일 생성 = 렌더 게이트 겸용 (블랭크 캔버스 감지 시 실패) |
-| 5 | `bun run test:e2e` | 프리뷰 하네스에서 캔버스 non-blank + 프레임 간 변화(alive) |
+| 4 | `bun run thumbs` | 200장 썸네일 생성 = 렌더 게이트 겸용 (블랭크 캔버스 감지 시 실패) |
+| 5 | `bun run test:e2e` | VFX형 제품 셸 + 200개 프리뷰의 non-blank + 프레임 간 변화(alive), 총 202 checks |
 
 ## 9. 성능 가드
 

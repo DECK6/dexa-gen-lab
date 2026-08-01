@@ -17,6 +17,16 @@ export const CATEGORIES: Category[] = [
   { id: 'space', label: 'SPACE' },
   { id: 'shader', label: 'SHADER' },
   { id: 'chaos', label: 'CHAOS' },
+  { id: 'wave', label: 'WAVE' },
+  { id: 'optics', label: 'OPTICS' },
+  { id: 'data', label: 'DATA' },
+  { id: 'system', label: 'SYSTEM' },
+  { id: 'kinetic', label: 'KINETIC' },
+  { id: 'textile', label: 'TEXTILE' },
+  { id: 'fluid', label: 'FLUID' },
+  { id: 'minimal', label: 'MINIMAL' },
+  { id: 'topology', label: 'TOPOLOGY' },
+  { id: 'cosmic', label: 'COSMIC' },
 ]
 
 export const ENGINES: Engine[] = ['p5', 'three']

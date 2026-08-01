@@ -26,6 +26,16 @@ const CATEGORIES = [
   'space',
   'shader',
   'chaos',
+  'wave',
+  'optics',
+  'data',
+  'system',
+  'kinetic',
+  'textile',
+  'fluid',
+  'minimal',
+  'topology',
+  'cosmic',
 ]
 const ENGINES = ['p5', 'three']
 

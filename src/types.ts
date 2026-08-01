@@ -14,6 +14,16 @@ export type CategoryId =
   | 'space'
   | 'shader'
   | 'chaos'
+  | 'wave'
+  | 'optics'
+  | 'data'
+  | 'system'
+  | 'kinetic'
+  | 'textile'
+  | 'fluid'
+  | 'minimal'
+  | 'topology'
+  | 'cosmic'
 
 export interface SketchMeta {
   id: string
