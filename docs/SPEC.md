@@ -1,12 +1,12 @@
-# DEXA GEN LAB — 설계 스펙 v2
+# DEXA GEN LAB — 설계 스펙 v3
 
-2026-08-01. 카탈로그: [CATALOG.md](./CATALOG.md) (20 카테고리 / 200종). 진행 원장: [PROGRESS.md](./PROGRESS.md)
+2026-08-02. 카탈로그: [CATALOG.md](./CATALOG.md) (20 카테고리 / 500종). 진행 원장: [PROGRESS.md](./PROGRESS.md)
 
 ## 1. 개요
 
 크리에이티브 코딩(제너러티브 아트 / 알고리즘 아트) 샘플을 브라우저에서 **라이브로 감상하고**, 시드를 바꿔 **변주를 생성하고**, **소스 코드를 가져가는** 카탈로그 사이트.
 
-- **엔진**: p5.js (160종) + three.js (40종 — GLSL 셰이더 10종 포함)
+- **엔진**: p5.js (400종) + three.js (100종 — GLSL 셰이더 25종 포함)
 - **배포**: `dexa.art/gen` (GitHub Pages — `adxdeck-dexa-daily-main/gen/`, `vfx/` 패턴과 동일)
 - **소스 레포**: `/Volumes/data/Dev/dexa-gen-lab` (별도), 산출물만 adxdeck에 복사
 - vfx-lab과 달리 **프레임워크 중립 커널·Remotion·내보내기 어댑터 없음** — 스케치는 엔진 API를 직접 사용한다. 단순함 우선.
@@ -18,6 +18,7 @@
 3. **팔레트는 중앙 토큰만.** 색은 `ctx.palette` 필드만 사용. `.sketch.ts` 안의 hex 리터럴(`#...`)은 린트 차단. 알파/보간은 엔진 API로(`p.color(pal.signal)` + `setAlpha`, `new THREE.Color(pal.signal)`). GLSL 내부 색상은 shaderQuad가 주입하는 팔레트 uniform 사용.
 4. **캔버스는 1:1 정사각.** 크기는 러너가 결정(`ctx.width/height`, 기본 640×640). 스케치는 하드코딩 금지.
 5. **모든 스케치는 애니메이션.** 최소한 느린 진화라도 움직여야 한다. `noLoop()` 금지.
+6. **근접 이웃 게이트.** 신규 스케치는 카탈로그에 가장 유사한 기존 ID와 차별점을 명시해야 하며, 같은 알고리즘의 파라미터 변형으로 개수를 채우는 것은 반려한다. 차별은 알고리즘 차원(다른 규칙·다른 역학·다른 구조)이어야 한다.
 
 ## 3. 스케치 계약 (src/types.ts가 소스 오브 트루스)
 
@@ -92,7 +93,7 @@ sketches/<category>/<ID>_<slug>.sketch.ts   ← export function sketch(...)
 ### 갤러리 (`/gen/`)
 
 - VFX LAB과 동일한 문법의 헤더(GALLERY/ABOUT) + 좌측 카테고리 필터 레일(20) + 엔진 필터(P5/THREE) + 검색/결과 카운트.
-- 1:1 카드 그리드: 기본은 정지 썸네일(`public/thumbs/<id>.webp`), **hover/focus 시 라이브 마운트** (동시 라이브 상한 3, three는 1 — GL 컨텍스트 한도), leave 시 언마운트.
+- 1:1 카드 그리드: 기본은 정지 썸네일(`public/thumbs/<id>.jpg`), **hover/focus 시 라이브 마운트** (동시 라이브 상한 3, three는 1 — GL 컨텍스트 한도), leave 시 언마운트.
 - 카드 라벨: JetBrains Mono 11px 대문자 — `FD01 / PERLIN FLOW / P5`.
 - 라우팅은 해시(`#/s/<id>`, `#/about`). Vite `base: '/gen/'`.
 
@@ -131,8 +132,8 @@ sketches/<category>/<ID>_<slug>.sketch.ts   ← export function sketch(...)
 | 1 | `bun run lint:registry` | 파일 규약·금지 패턴 |
 | 2 | `bun run typecheck` | tsc --noEmit strict |
 | 3 | `bun run build` | vite build (lint+tsc 포함) |
-| 4 | `bun run thumbs` | 200장 썸네일 생성 = 렌더 게이트 겸용 (블랭크 캔버스 감지 시 실패) |
-| 5 | `bun run test:e2e` | VFX형 제품 셸 + 200개 프리뷰의 non-blank + 프레임 간 변화(alive), 총 202 checks |
+| 4 | `bun run thumbs` | 500장 썸네일 생성 = 렌더 게이트 겸용 (블랭크 캔버스 감지 시 실패) |
+| 5 | `bun run test:e2e` | VFX형 제품 셸 + 500개 프리뷰의 non-blank + 프레임 간 변화(alive) |
 
 ## 9. 성능 가드
 

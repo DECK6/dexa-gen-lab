@@ -3,7 +3,7 @@ import { siteHeader } from './shell'
 const COPY = {
   ko: {
     heroBody:
-      '결정적 제너러티브 아트 200종을 브라우저에서 감상하고, 시드로 변주한 뒤, 실제 TypeScript 소스까지 가져가는 크리에이티브 코딩 카탈로그입니다.',
+      '결정적 제너러티브 아트 500종을 브라우저에서 감상하고, 시드로 변주한 뒤, 실제 TypeScript 소스까지 가져가는 크리에이티브 코딩 카탈로그입니다.',
     sections: [
       {
         index: '01 / BROWSE',
@@ -26,11 +26,11 @@ const COPY = {
         body: '카테고리 폴더에 파일 쌍을 드롭하면 갤러리가 자동으로 발견합니다. 레지스트리 린트가 결정성, 팔레트, 파일명, 메타 계약을 검사합니다.',
       },
     ],
-    sourceLabel: '전체 소스, 200종 카탈로그, 설계 계약은 GitHub에 공개되어 있습니다.',
+    sourceLabel: '전체 소스, 500종 카탈로그, 설계 계약은 GitHub에 공개되어 있습니다.',
   },
   en: {
     heroBody:
-      'A creative-coding catalog for exploring 200 deterministic generative artworks in the browser, regenerating them by seed, and taking the TypeScript source.',
+      'A creative-coding catalog for exploring 500 deterministic generative artworks in the browser, regenerating them by seed, and taking the TypeScript source.',
     sections: [
       {
         index: '01 / BROWSE',
@@ -53,7 +53,7 @@ const COPY = {
         body: 'Drop a matching file pair into a category folder and the gallery discovers it automatically. Registry lint enforces determinism, palette, naming, and metadata contracts.',
       },
     ],
-    sourceLabel: 'The full source, 200-work catalog, and architecture contract are public on GitHub.',
+    sourceLabel: 'The full source, 500-work catalog, and architecture contract are public on GitHub.',
   },
 } as const
 
@@ -79,7 +79,7 @@ export function mountAbout(root: HTMLElement): { destroy: () => void } {
         <div class="about-grid" data-role="about-grid"></div>
         <aside class="about-note mono">
           <span>RUNTIME CONTRACT</span>
-          640×640 SQUARE / SEEDED PRNG / P5 + THREE / 200 ANIMATED WORKS / FIXED-FRAME THUMBNAILS
+          640×640 SQUARE / SEEDED PRNG / P5 + THREE / 500 ANIMATED WORKS / FIXED-FRAME THUMBNAILS
         </aside>
         <aside class="about-note mono">
           <span>SOURCE</span>

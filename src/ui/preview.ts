@@ -31,11 +31,16 @@ export function mountPreview(
   if (!entry) {
     console.error(`preview: ${id} not found`)
   } else {
-    void mountSketch(stage, entry, { seed, size, thumb })
-      .then((mounted) => {
-        if (disposed) mounted.destroy()
-        else handle = mounted
-      })
+    void (async () => {
+      // Canvas text is rasterized at draw time. Force the canvas font to resolve
+      // before mounting; fonts.ready alone ignores a face that CSS has not used yet.
+      await Promise.allSettled([document.fonts.load('16px "JetBrains Mono"')])
+      await document.fonts.ready
+      if (disposed) return
+      const mounted = await mountSketch(stage, entry, { seed, size, thumb })
+      if (disposed) mounted.destroy()
+      else handle = mounted
+    })()
       .catch((error) => console.error(`preview: ${id} failed to mount`, error))
   }
 

@@ -42,14 +42,14 @@ function canvasSample() {
 
 const ids = listIds()
 
-test('VFX-aligned product shell renders the 200-work catalog', async ({ page }) => {
+test('VFX-aligned product shell renders the 500-work catalog', async ({ page }) => {
   await page.goto('#/')
   await expect(page.locator('.site-header')).toBeVisible()
   await expect(page.locator('.gallery-layout')).toBeVisible()
   await expect(page.locator('.filters')).toBeVisible()
   await expect(page.locator('.gallery-toolbar')).toBeVisible()
-  await expect(page.locator('.effect-grid .effect-card')).toHaveCount(200)
-  await expect(page.locator('[data-role="count"]')).toHaveText('200 / 200')
+  await expect(page.locator('.effect-grid .effect-card')).toHaveCount(500)
+  await expect(page.locator('[data-role="count"]')).toHaveText('500 / 500')
 
   await page.goto('#/about')
   await expect(page.locator('.about-page')).toBeVisible()

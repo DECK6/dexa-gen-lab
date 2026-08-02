@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "bun run lint:registry && tsc --noEmit && vite build",
+    "build": "bun run lint:registry && bun run audit:catalog && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint:registry": "node scripts/lint-registry.mjs",
+    "audit:catalog": "node scripts/audit-catalog.mjs",
+    "test:audit": "bun test scripts/audit-catalog.test.mjs",
     "thumbs": "node scripts/thumbs.mjs",
     "test:e2e": "playwright test",
     "deploy": "bash scripts/deploy.sh"

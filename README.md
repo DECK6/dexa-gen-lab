@@ -1,6 +1,6 @@
 # DEXA GEN LAB
 
-**200 deterministic generative-art sketches** in a live creative-coding catalog.
+**500 deterministic generative-art sketches** in a live creative-coding catalog.
 
 **Live:** https://dexa.art/gen/
 
@@ -14,7 +14,7 @@
 
 DEXA GEN LAB is a browser-based catalog for exploring, regenerating, and learning from generative art. Every sketch is animated, seed-driven, and presented with its source code.
 
-- **200 sketches** — 160 p5.js works and 40 Three.js works, including 10 GLSL shaders
+- **500 sketches** — 400 p5.js works and 100 Three.js works, including 25 GLSL shaders
 - **Live gallery** — filter by category or engine, search by title or tag, and preview on hover or keyboard focus
 - **Detail view** — regenerate with a new seed, copy the source, and move through related works
 - **VFX LAB-aligned shell** — shared light header, filter rail, instrument-panel cards, workbench detail layout, and bilingual ABOUT page
@@ -34,7 +34,7 @@ Every sketch receives a shared `SketchCtx` with canvas dimensions, seed, seeded 
 
 FIELD · PARTICLE · GEOMETRY · FRACTAL · AUTOMATA · ORGANIC · GLYPH · SPACE · SHADER · CHAOS · WAVE · OPTICS · DATA · SYSTEM · KINETIC · TEXTILE · FLUID · MINIMAL · TOPOLOGY · COSMIC
 
-Each category contains 10 works. The complete catalog is documented in [`docs/CATALOG.md`](docs/CATALOG.md).
+Each category contains 25 works. The complete catalog is documented in [`docs/CATALOG.md`](docs/CATALOG.md).
 
 ## Develop
 
@@ -42,9 +42,10 @@ Each category contains 10 works. The complete catalog is documented in [`docs/CA
 bun install
 bun run dev             # gallery at http://localhost:5173/gen/
 bun run lint:registry   # registry, determinism, and palette rules
+bun run audit:catalog   # catalog contract + W6 nearest-neighbor clone gate
 bun run typecheck
 bun run build
-bun run thumbs          # render all 200 thumbnails
+bun run thumbs          # render all 500 thumbnails
 bun run test:e2e        # product-shell + non-blank + frame-change checks
 ```
 
@@ -71,7 +72,7 @@ Metadata is loaded eagerly for the gallery; sketch modules and raw source are lo
 ## Docs
 
 - [`docs/SPEC.md`](docs/SPEC.md) — architecture, contracts, design rules, and verification gates
-- [`docs/CATALOG.md`](docs/CATALOG.md) — all 200 sketches
+- [`docs/CATALOG.md`](docs/CATALOG.md) — all 500 sketches
 - [`docs/PROGRESS.md`](docs/PROGRESS.md) — implementation ledger
 
-Accepted through registry lint, TypeScript, production build, 200 thumbnail renders, and 202 Playwright checks.
+Accepted through registry/catalog audit, TypeScript, production build, two byte-identical 500-thumbnail renders, and 503 Playwright checks.
